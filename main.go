@@ -10,27 +10,23 @@ import (
 	"fmt"
 	// "os"
 	"os/exec"
-	// "time"
+	"time"
 )
-
-// Bar is the struct that holds each of the modules and displays the data from them
-type Bar struct {
-	Modules []Module
-}
 
 type Module interface {
 	GetInfo() (string, error)
 }
 
+// Modules that are displayed in the bar
 var BarModules = []Module{
 	DateModule{},
 	BatteryModule{},
 }
 
 func main() {
-
 	main := Bar{
-		Modules: BarModules,
+		Modules:     BarModules,
+		RefreshRate: time.Second * 1,
 	}
 	fmt.Println("Bar Started")
 
