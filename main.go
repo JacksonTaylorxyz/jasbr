@@ -8,11 +8,11 @@ package main
 
 import (
 	"fmt"
-	// "os"
 	"os/exec"
 	"time"
 )
 
+// Module is the interface for you to extend what your bar does.
 type Module interface {
 	GetInfo() (string, error)
 }
@@ -30,28 +30,14 @@ func main() {
 	}
 	fmt.Println("Bar Started")
 
-	var value string
-
 	for {
-		value = ""
-		for _, b := range main.Modules {
-			p1, err := b.GetInfo()
-			if err != nil {
-				fmt.Println(err)
-				continue
-			}
-			value += "[" + p1 + "]"
-		}
-
-		setBar(value)
+		display(main.Display())
+		time.Sleep(main.RefreshRate)
+		fmt.Println("Updating bar")
 	}
 }
 
-func getBattery() string {
-	return "100 %"
-}
-
-func setBar(value string) (err error) {
+func display(value string) (err error) {
 	err = exec.Command("xsetroot", "-name", value).Run()
 	return err
 }
