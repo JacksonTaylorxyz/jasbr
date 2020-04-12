@@ -21,6 +21,7 @@ type Module interface {
 var BarModules = []Module{
 	DateModule{},
 	BatteryModule{},
+	TimeModule{},
 }
 
 func main() {
