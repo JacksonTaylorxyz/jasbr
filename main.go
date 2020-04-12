@@ -8,8 +8,6 @@ package main
 
 import (
 	"fmt"
-	"os/exec"
-	"time"
 )
 
 // Module is the interface for you to extend what your bar does.
@@ -26,19 +24,9 @@ var BarModules = []Module{
 
 func main() {
 	main := Bar{
-		Modules:     BarModules,
-		RefreshRate: time.Second * 1,
+		Modules: BarModules,
 	}
-	fmt.Println("Bar Started")
 
-	for {
-		display(main.Display())
-		time.Sleep(main.RefreshRate)
-		fmt.Println("Updating bar")
-	}
-}
-
-func display(value string) (err error) {
-	err = exec.Command("xsetroot", "-name", value).Run()
-	return err
+	// Display the bar info to stdout
+	fmt.Println(main.Display())
 }
