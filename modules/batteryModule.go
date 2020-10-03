@@ -1,4 +1,4 @@
-package main
+package modules
 
 import (
 	"io/ioutil"
@@ -7,7 +7,6 @@ import (
 // TODO: Move this to a central spot, like a config.h
 const (
 	batteryPath = "/sys/class/power_supply/BAT0/capacity"
-	identifier  = "BAT"
 )
 
 // BatteryModule is the module that controls finding out the battery

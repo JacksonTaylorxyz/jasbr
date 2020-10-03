@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/HelixBePraised/jasbr/modules"
+)
 
 // Bar is the struct that holds each of the modules and displays the data from them
 type Bar struct {
-	Modules []Module
+	Modules []modules.Module
 }
 
 func (b Bar) Display() string {

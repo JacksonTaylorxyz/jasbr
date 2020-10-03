@@ -16,5 +16,6 @@ func main() {
 	}
 
 	// Display the bar info to stdout
+	// TODO: Change this to interact with Xorg directly?
 	fmt.Println(main.Display())
 }
